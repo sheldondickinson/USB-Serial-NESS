@@ -1,19 +1,42 @@
 {
-    "name": "TCP Serial Redirect",
-    "version": "1.9",
-    "slug": "tcp_serial_redirect",
-    "description": "An add-on to redirect serial communication over TCP using Kevin Reedy's tcp_serial_redirect.  I use this to connect my Home assistant server to my Russound Amp to control it using a USB to serial cable directly connected to the HA server.  https://github.com/breniii/USB-Serial-Russound/blob/main/README.md",
-    "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
-    "startup": "services",
-    "boot": "auto",
-    "options": {},
-    "schema": {},
-    "devices": ["/dev/ttyUSB0:/dev/ttyUSB0:rwm"],
-    "ports": {
-      "7777/tcp": 7777
-    },
-    "map": ["config:rw", "ssl", "share", "backup"],
-    "host_network": false,
-    "icon": "/images/icon.png"
-  }
-  
+  "name": "USB Serial Redirect",
+  "version": "1.0.0",
+  "slug": "usb_serial_redirect",
+  "description": "Expose a USB serial adapter as a raw TCP socket for integrations such as Ness, Russound, alarm panels, AV controllers and other serial devices.",
+  "url": "https://github.com/sheldondickinson/USB-Serial-NESS",
+  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "startup": "services",
+  "boot": "auto",
+  "init": false,
+  "options": {
+    "serial_device": "/dev/ttyUSB0",
+    "baudrate": 9600,
+    "bytesize": 8,
+    "parity": "N",
+    "stopbits": "1",
+    "rtscts": false,
+    "xonxoff": false,
+    "rts": null,
+    "dtr": null,
+    "debug_logging": false
+  },
+  "schema": {
+    "serial_device": "str",
+    "baudrate": "int",
+    "bytesize": "list(5|6|7|8)",
+    "parity": "list(N|E|O|S|M)",
+    "stopbits": "list(1|1.5|2)",
+    "rtscts": "bool",
+    "xonxoff": "bool",
+    "rts": "int?",
+    "dtr": "int?",
+    "debug_logging": "bool"
+  },
+  "devices": ["/dev/ttyUSB0:/dev/ttyUSB0:rwm"],
+  "ports": {
+    "7777/tcp": 7777
+  },
+  "map": ["config:rw", "ssl", "share", "backup"],
+  "host_network": false,
+  "icon": "/images/icon.png"
+}
