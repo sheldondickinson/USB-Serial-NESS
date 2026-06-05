@@ -1,6 +1,6 @@
 {
-    "name": "USB Serial adapter to Net for Russound controls on Home assistant",
-    "url": "https://github.com/breniii/USB-Serial-Russound/",
-    "maintainer": "breniii",
-    "add-ons": []
-  }
+  "name": "USB Serial Redirect",
+  "url": "https://github.com/sheldondickinson/USB-Serial-NESS",
+  "maintainer": "Sheldon Dickinson",
+  "add-ons": []
+}
